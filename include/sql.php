@@ -42,6 +42,28 @@ function autentification($email,$motDePasse){
     */
         
 
+function afficherProduitModifier($produit_id_mod){
+    global $connexion;
+        $requete = "SELECT produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
+                join categorie
+                on produit.categorie_categorie_id = categorie_id
+                join marque
+                on produit.marque_marque_id = marque_id
+                where produit_id = '$produit_id_mod'";    
+    $resultat = mysqli_query($connexion,$requete);
+    return $resultat;
+    
+    
+}
+
+function modifieProduit($produit_id_mod){
+    global $connexion;
+    
+    $requete = "update produit SET produit_nom = value1, column2 = value2, ...";
+    
+    
+    
+}
 
 function afficherProduit(){
     
