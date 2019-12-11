@@ -19,15 +19,29 @@ $connexion = connectDb();
 function autentification($email,$motDePasse){
     global $connexion;
     $requete = "SELECT courriel,client_mot_de_passe from client WHERE courriel = ? AND client_mot_de_passe = ?";
-        
-        $resultat = mysqli_query($connexion,$requete);
+    $stmt = mysqli_prepare($connexion, $requete);
+    $hash = hash("md5", $motDePasse);    
+    mysqli_stmt_bind_param($stmt, "ss", $email, $hash);    
+    if (mysqli_stmt_execute($stmt)) {
+            $resultat = mysqli_stmt_get_result($stmt);
+            if (mysqli_num_rows($resultat) == 1) {
+                    header("location: index.php");
+            }
+}
+
+    }
+    
+    
+/*         $resultat = mysqli_query($connexion,$requete);
         $row = mysqli_num_rows($resultat);
         $row = mysqli_fetch_assoc($resultat);
         $_SESSION['email'] = $row["courriel"];
         $_SESSION['mdp'] = $row['client_mot_de_passe'];
-    header("location: index.php");
+    header("location: index.php"); 
+    
+    */
         
-    }
+
 
 function afficherProduit(){
     
@@ -103,11 +117,11 @@ function listeMarque(){
 
 function ajoutUtilisateur($nom,$prenom,$email,$motDePasse){
     global $connexion;
-    
+    $hash = hash("md5", $motDePasse);    
     $requete = "INSERT INTO client (client_nom,client_prenom,client_mot_de_passe,courriel)
                 VALUES(?,?,?,?)";
   $stmt = mysqli_prepare($connexion, $requete);
-    mysqli_stmt_bind_param($stmt, "ssss", $nom,$prenom,$motDePasse,$email);
+    mysqli_stmt_bind_param($stmt, "ssss", $nom,$prenom,$hash,$email);
     
     if (mysqli_stmt_execute($stmt)) {
         $resultat = mysqli_stmt_get_result($stmt);
