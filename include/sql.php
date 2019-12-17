@@ -33,7 +33,7 @@ function afficherProduitModifier($produit_id_mod){
 function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $produit_prix, $produit_categorie, $produit_marque){
     global $connexion;
     
-    $requete = $requete = "UPDATE produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
+    $requete = "UPDATE produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
     join categorie
     on produit.categorie_categorie_id = categorie_id
     join marque
@@ -43,10 +43,8 @@ function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $p
 }
 
 
-function afficherProduit(){
-    
-    global $connexion;
-    
+function afficherProduit(){    
+    global $connexion;    
     
     $requete = "SELECT produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
                 join categorie
@@ -54,8 +52,7 @@ function afficherProduit(){
                 join marque
                 on produit.marque_marque_id = marque_id";    
     $resultat = mysqli_query($connexion,$requete);
-    return $resultat;
-        
+    return $resultat;      
 
 }
 
@@ -139,4 +136,18 @@ function afficherClient(){
     return $resultat;
 }
 
+
+
+
+
+
+
+
+
+
+
 ?>
+
+
+
+                

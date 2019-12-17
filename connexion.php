@@ -33,11 +33,11 @@
     </header>
     <main>
         <form action="" method="POST">
-            <input type="text" name="email" placeholder="Adresse e-mail">
+            <input type="text" name="email" placeholder="Adresse courriel">
             <input type="text" name="mdp" placeholder="Mot de passe">
             <input type="submit" value="connexion">
         </form>
-        <a href="creationCompte.php"> creation Compte</a>
+        <a href="creationCompte.php"> Créer votre compte</a>
         <?php 
         
         if(isset($_POST['email'],$_POST['mdp'])){

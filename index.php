@@ -36,27 +36,42 @@
     </header>
 
     <main>
+
+
+    <h1>Catalogue complet</h1>
+
         <table>
             <tr>
+                <th>Ajouter au panier</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Prix</th>
-                <th>Categorie</th>
                 <th>Marque</th>
+                <th>Categorie</th>
                 <th>Numero de serie</th>
+
 
             </tr>
             <?php 
                 $liste = afficherProduit();
-                foreach($liste as $row){
+
+                foreach($liste as $row["categorie_nom"]){
+                    foreach($liste as $row){
                     
-                    echo"<tr>";
-                    echo "<td>".$row["produit_nom"]."</td>";
-                    echo "<td>".$row["produit_description"]."</td>";
-                    echo "<td>".$row["produit_prix"]."</td>";                    
-                    echo "<td>".$row["marque_nom"]."</td>";
-                    echo "<td>".$row["categorie_nom"]."</td>";
-                    echo "<td>".$row["produit_id"]."</td>";
+                        echo"<tr>";
+
+                        echo "<td><input type='checkbox' name='commanderProduit' </td>";
+
+                        echo "<td>".$row["produit_nom"]."</td>";
+                        echo "<td>".$row["produit_description"]."</td>";
+                        echo "<td>".$row["produit_prix"]."</td>";                    
+                        echo "<td>".$row["marque_nom"]."</td>";
+                        echo "<td>".$row["categorie_nom"]."</td>";
+                        echo "<td>".$row["produit_id"]."</td>";
+    
+                } 
+                
+                    
                     
                     /*ici pour afficher la session admin affin de suprimer*/
 
@@ -82,15 +97,14 @@
                     header('Location: index.php');
                     
                 } */
-            
-                
-               
-                
+                   
                 
             
             ?>
         </table>
-
+        <form action="" method="get">
+            <input type="submit" name="commander" value="Enregistrer la commande">
+        </form>
     </main>
 
 
@@ -100,3 +114,8 @@
 
 
 </html>
+<?php
+
+
+
+?>

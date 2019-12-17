@@ -42,8 +42,8 @@
                 <th>nom</th>
                 <th>description</th>
                 <th>prix</th>
-                <th>categorie</th>
                 <th>marque</th>
+                <th>categorie</th>
             </tr>
             <?php
             
@@ -59,7 +59,7 @@
                     echo "<td><input type='text' size=50 name='modifier_categorie' value='" . $rangee["categorie_nom"] . "'></td>";
                     echo "<td><input type='submit' name='enregistrer_produit' value='Enregistrer'></td>";
                     echo "</form>";
-                    echo "</tr>";                    
+                    echo "</tr>";
             }
             
             ?>
