@@ -1,7 +1,7 @@
 <?php
+    require_once("session.php");
+    require_once("connectDB.php");
     require_once("include/sql.php");
-$liste = afficherProduit();
-echo $_SESSION['email'];
 ?>
 
 
@@ -34,7 +34,7 @@ echo $_SESSION['email'];
         <?php require_once("header.php");
             if ($_SESSION['email'] == "admin@admin.com" &&$_SESSION['mdp'] == "admin"){
                 /*ici pour afficher la session admin affin d'ajouter*/
-            echo '<a href="ajoutProduit.php"> Ajout Produit</a>';
+                echo '<a href="ajoutProduit.php"> Ajout Produit</a>';
             }
         ?>
     </header>
@@ -49,6 +49,7 @@ echo $_SESSION['email'];
                 <th>marque</th>
             </tr>
             <?php 
+                $liste = afficherProduit();
                 foreach($liste as $row){
                     
                     echo"<tr>";

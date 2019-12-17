@@ -1,11 +1,7 @@
 <?php
+    require_once("session.php");
+    require_once("connectDB.php");
     require_once("include/sql.php");
-    if (isset($_SESSION['email'])){
-        
-echo $_SESSION['email'];
-}
-
-$liste = afficherProduitModifier($_GET['produit_id_mod']);
 ?>
 
 
@@ -54,7 +50,7 @@ $liste = afficherProduitModifier($_GET['produit_id_mod']);
             </tr>
             <?php 
             
-            
+            $liste = afficherProduitModifier($_GET['produit_id_mod']);
             if($rangee = mysqli_fetch_assoc($liste))
 				
 				{  

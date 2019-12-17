@@ -1,22 +1,6 @@
 <?php 
-session_start();
 
-    function connectDb(){
-        
-        $connexion = mysqli_connect("localhost","root","","magasin_de_sport");
-        
-        if(!$connexion){
-            
-            trigger_error("erreur de connection : ".mysqli_connect_error());
-        }
-        
-        mysqli_query($connexion, "SET NAMES 'utf8'");
-		return $connexion;
-    }
-
-$connexion = connectDb();
-
-function autentification($email,$motDePasse){
+function autentification($email,$motDePasse) {
     global $connexion;
     $requete = "SELECT courriel,client_mot_de_passe from client WHERE courriel = ? AND client_mot_de_passe = ?";
     $stmt = mysqli_prepare($connexion, $requete);
@@ -25,22 +9,12 @@ function autentification($email,$motDePasse){
     if (mysqli_stmt_execute($stmt)) {
             $resultat = mysqli_stmt_get_result($stmt);
             if (mysqli_num_rows($resultat) == 1) {
-                    header("location: index.php");
+                session_start();
+                $_SESSION['email'] = $_POST['email'];
+                header("location: index.php");
             }
-}
-
     }
-    
-    
-/*         $resultat = mysqli_query($connexion,$requete);
-        $row = mysqli_num_rows($resultat);
-        $row = mysqli_fetch_assoc($resultat);
-        $_SESSION['email'] = $row["courriel"];
-        $_SESSION['mdp'] = $row['client_mot_de_passe'];
-    header("location: index.php"); 
-    
-    */
-        
+}
 
 function afficherProduitModifier($produit_id_mod){
     global $connexion;

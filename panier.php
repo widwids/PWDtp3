@@ -1,6 +1,7 @@
 <?php
+    require_once("session.php");
+    require_once("connectDB.php");
     require_once("include/sql.php");
-    echo $_SESSION['email'];
 ?>
 
 

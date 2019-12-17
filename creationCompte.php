@@ -46,7 +46,7 @@
         
         <?php 
     if(isset($_POST['nom'],$_POST['prenom'],$_POST['motDePasse'],$_POST['email'])){
-                ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['motDePasse'],$_POST['email']);  
+        ajoutUtilisateur($_POST['nom'],$_POST['prenom'],$_POST['email'], $_POST['motDePasse']);  
     }
         ?>
 

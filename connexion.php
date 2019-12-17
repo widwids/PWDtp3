@@ -1,5 +1,6 @@
 <?php
     require_once("include/sql.php");
+    require_once("connectDB.php");
 ?>
 
 
@@ -24,13 +25,10 @@
 
     </style>
 </head>
-
 <body>
-
     <header>
         <?php require_once("header.php")?>
     </header>
-
     <main>
         <form action="" method="POST">
             <input type="text" name="email" placeholder="Adresse e-mail">
@@ -42,21 +40,9 @@
         
         if(isset($_POST['email'],$_POST['mdp'])){
             autentification($_POST['email'],$_POST['mdp']);
-            $_SESSION['email']= $_POST['email'];
-            $_SESSION['mdp'] = $_POST['mdp'];
-            echo $_SESSION['email'];
         }            
         
         ?>
-
-
-
     </main>
-
-
 </body>
-
-
-
-
 </html>

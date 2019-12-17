@@ -1,7 +1,7 @@
 <?php
+    require_once("session.php");
+    require_once("connectDB.php");
     require_once("include/sql.php");
-    $liste = listeCategorie();
-    $listeMarque = listeMarque();
 ?>
 
 
@@ -56,6 +56,7 @@
             <select name="categorie" id="">
 
                 <?php 
+                $liste = listeCategorie();
                          foreach($liste as $row){
                             echo "<option value = ".$row["categorie_id"].">";
                             echo $row["categorie_nom"];                                
@@ -69,6 +70,7 @@
             <select name="marque" id="">
 
                 <?php 
+                $listeMarque = listeMarque();
                          foreach($listeMarque as $row){
                             echo "<option value=".$row["marque_id"].">";
                             echo $row["marque_nom"];

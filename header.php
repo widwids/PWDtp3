@@ -1,7 +1,5 @@
-
-   
 <h1>
-    <a href="index.php"> page prncipal</a>
-    <a href="connexion.php"> connexion</a>
-    <a href="panier.php"> panier</a>
+    <a href="index.php">Page Principal</a>
+    <a href="connexion.php">Connexion</a>
+    <a href="panier.php">Panier</a>
 </h1>
