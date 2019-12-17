@@ -138,7 +138,18 @@ function afficherClient(){
 
 
 
+/* function afficherCommande(){    
+    global $connexion;    
+    
+    $requete = "SELECT produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
+                join categorie
+                on produit.categorie_categorie_id = categorie_id
+                join marque
+                on produit.marque_marque_id = marque_id";    
+    $resultat = mysqli_query($connexion,$requete);
+    return $resultat;      
 
+} */
 
 
 

@@ -9,7 +9,7 @@
 <html lang="fr">
 
 <head>
-    <title> exercice 4</title>
+    <title>Modification de Produit</title>
 
     <style>
         body {
@@ -51,15 +51,18 @@
             if($rangee = mysqli_fetch_assoc($liste))    
             {  
                     echo "<tr>";
-                    echo "<form action=\"\" method=\"post\">";
-                    echo "<td><input type='text' size=50 name='modifier_nom' value='" . $rangee["produit_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier_description' value='" . $rangee["produit_description"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier_prix' value='" . $rangee["produit_prix"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier_marque' value='" . $rangee["marque_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier_categorie' value='" . $rangee["categorie_nom"] . "'></td>";
+                    echo "<form action=\"\" method=\"post\">";                    
+
+                    
+                    echo "<td><input type='text' size=50 name='produit_nom' value='" . $rangee["produit_nom"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='produit_description' value='" . $rangee["produit_description"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='produit_prix' value='" . $rangee["produit_prix"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='categorie_nom' value='" . $rangee["categorie_nom"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='marque_nom' value='" . $rangee["marque_nom"] . "'></td>";
+                    
                     echo "<td><input type='submit' name='enregistrer_produit' value='Enregistrer'></td>";
-                    echo "</form>";
-                    echo "</tr>";
+
+                    echo "</form></tr>";
             }
             
             ?>
@@ -75,8 +78,8 @@
 
 </html>
 <?php
-    if(isset($_POST['modifier_nom'], $_POST['modifier_description'], $_POST['modifier_prix'], $_POST['modifier_marque'], $_POST['modifier_categorie'])){
+    if(isset($_POST['produit_nom'], $_POST['produit_description'], $_POST['produit_prix'], $_POST['categorie_nom'], $_POST['marque_nom'])){
         $idProduit = $_GET['produit_id_mod'];
-        modifierProduit($idProduit, $_POST['modifier_nom'], $_POST['modifier_description'], $_POST['modifier_prix'], $_POST['modifier_marque'], $_POST['modifier_categorie']);
+        modifierProduit($idProduit, $_POST['produit_nom'], $_POST['produit_description'], $_POST['produit_prix'], $_POST['categorie_nom'], $_POST['marque_nom']);
     }
 ?>

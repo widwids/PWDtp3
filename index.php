@@ -58,9 +58,20 @@
                 foreach($liste as $row["categorie_nom"]){
                     foreach($liste as $row){
                     
+
+                        
+
                         echo"<tr>";
 
-                        echo "<td><input type='checkbox' name='commanderProduit' </td>";
+                        echo "<td>
+                            <form name='commanderProduit' method='get'>
+                            <input type='checkbox' name='commanderProduit' value='".$row['produit_id'].">'";
+
+                        echo "<td>
+                            <input type='submit' name='commanderProduit' value='Enregistrer la commande'>
+
+                            </form></td>";
+                            
 
                         echo "<td>".$row["produit_nom"]."</td>";
                         echo "<td>".$row["produit_description"]."</td>";
@@ -69,6 +80,8 @@
                         echo "<td>".$row["categorie_nom"]."</td>";
                         echo "<td>".$row["produit_id"]."</td>";
     
+
+
                 } 
                 
                     
@@ -101,10 +114,11 @@
                 
             
             ?>
+     <!--        <form action="" method="get">
+            <input type="submit" name="commanderProduit" value="Enregistrer la commande">
+        </form> -->
         </table>
-        <form action="" method="get">
-            <input type="submit" name="commander" value="Enregistrer la commande">
-        </form>
+        
     </main>
 
 
@@ -117,5 +131,16 @@
 <?php
 
 
+//pour envoyer les produits checked a la function afficherCommande pour afficher sur page de commande
+/* if (isset($_GET["commanderProduit"])){          
+    afficherCommande($_GET['produit_id']);    
+}; */
+
+
+
+        if(isset($_GET['commanderProduit'])){
+            echo $row['produit_id'];
+        }
+        
 
 ?>
