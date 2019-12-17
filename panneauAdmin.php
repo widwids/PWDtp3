@@ -34,9 +34,9 @@
     </header>
 
     <main>
-    <h1>Ajouter marque</h1>
-        <header>
+    <h1>Ajouter une marque</h1>
 
+        <header>
         </header>
 
         <form action="" method="get">
@@ -44,16 +44,21 @@
             <input type="submit" name="enregistrerMarque" value="enregistrer">
         </form>
 
-        <h1>Ajouter categorie</h1>
+
+
+
+        <h1>Ajouter une categorie</h1>
 
         <form action="" method="get">
-
             <input type="text" name="categorie_nom" placeholder="categorie nom">
             <input type="submit" name="enregistrerCategorie" value="enregistrer">
         </form>
 
-        <h1>Ajouter produits</h1>
 
+
+
+
+        <h1>Ajouter un produit</h1>
 
         <form action="" method="get">
             <input type="text" name="produit_nom" placeholder="produit nom">
@@ -67,21 +72,17 @@
                             echo "<option value = ".$row["categorie_id"].">";
                             echo $row["categorie_nom"];                                
                             echo "</option>";
-                         }
-                            
+                         }                            
                     ?>
-
             </select>
 
             <select name="marque" id="">
-
                 <?php 
                 $listeMarque = listeMarque();
                          foreach($listeMarque as $row){
                             echo "<option value=".$row["marque_id"].">";
                             echo $row["marque_nom"];
                             echo "</option>";
-
                          }
                 ?>
             </select>
@@ -90,14 +91,16 @@
         </form>
 
         
-        <h1>Modifier Produit</h1>
-        <form action="" method="get">
 
+
+
+        <h1>Modifier un produit</h1>
+
+        <form action="" method="get">
             <input type="text" name="produit_id_mod" placeholder="id produit">
             <input type="submit" value="Aller modifier le produit">
-
-
         </form>
+
         <?php
         if(isset($_GET['produit_id_mod']) && strlen($_GET['produit_id_mod']) > 0){
             $idProduit = $_GET['produit_id_mod'];
@@ -108,7 +111,32 @@
 
 
 
+
+        <h1>Supprimer un Produit</h1>
+
+        <form action="" method="get">
+            <input type="text" name="supprimerProduit" placeholder="id produit">
+            <input type="submit" value="Supprimer le produit">
+        </form>
+        
+        <?php
+        if(isset($_GET['supprimerProduit']) && strlen($_GET['supprimerProduit']) > 0){
+            if (isset($_GET["supprimerProduit"])){          
+                supprimerProduit($_GET['supprimerProduit']);    
+            };
+        }
+        ?>
       
+      <h1>Afficher une commande</h1>
+
+
+
+
+
+
+
+
+
 
     </main>
 

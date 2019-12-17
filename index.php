@@ -9,7 +9,7 @@
 <html lang="fr">
 
 <head>
-    <title> exercice 4</title>
+    <title>TP3</title>
 
     <style>
         body {
@@ -38,11 +38,13 @@
     <main>
         <table>
             <tr>
-                <th>nom</th>
-                <th>description</th>
-                <th>prix</th>
-                <th>categorie</th>
-                <th>marque</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Categorie</th>
+                <th>Marque</th>
+                <th>Numero de serie</th>
+
             </tr>
             <?php 
                 $liste = afficherProduit();
@@ -54,21 +56,22 @@
                     echo "<td>".$row["produit_prix"]."</td>";                    
                     echo "<td>".$row["marque_nom"]."</td>";
                     echo "<td>".$row["categorie_nom"]."</td>";
-                    echo "<td>".$row["produit_id"]."ajout"."</td>";
+                    echo "<td>".$row["produit_id"]."</td>";
                     
                     /*ici pour afficher la session admin affin de suprimer*/
-                    if ($_SESSION['email'] == "admin@admin.com" && $_SESSION['mdp'] == "admin"){                        
+
+                    /* if ($_SESSION['email'] == "admin@admin.com" && $_SESSION['mdp'] == "admin"){                        
                     echo "<td>"."<a href ='modifierProduit.php?produit_id_mod=".$row["produit_id"]."'>modifier</a>"."</td>";   
                     echo "<td>"."<a href ='?produit_id=".$row["produit_id"]."'>suprimer</a>"."</td>";   
                     }
-                    echo "</tr>";
+                    echo "</tr>"; */
                 }
             
             ?>
 
             <?php 
                
-                if(isset($_GET["produit_id"])){
+               /*  if(isset($_GET["produit_id"])){
                     suprimeProduit($_GET["produit_id"]);
                     header('Location: index.php');
                     
@@ -78,7 +81,7 @@
                     afficherProduitModifier($_GET["produit_id_mod"]);
                     header('Location: index.php');
                     
-                }
+                } */
             
                 
                

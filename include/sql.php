@@ -88,7 +88,7 @@ function ajoutProduit($produit_nom,$produit_description,$produit_prix,$produit_c
     
 }
 
-function suprimeProduit($produit_id){
+function supprimerProduit($produit_id){
     global $connexion;
     
     $requete = "DELETE FROM produit WHERE produit_id =".$produit_id."";

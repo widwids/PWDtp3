@@ -9,7 +9,7 @@
 <html lang="fr">
 
 <head>
-    <title> exercice 4</title>
+    <title>Panier</title>
 
     <style>
         body {
