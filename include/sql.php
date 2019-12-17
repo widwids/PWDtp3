@@ -30,14 +30,18 @@ function afficherProduitModifier($produit_id_mod){
     
 }
 
-function modifieProduit($produit_id_mod){
+function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $produit_prix, $produit_categorie, $produit_marque){
     global $connexion;
     
-    $requete = "update produit SET produit_nom = value1, column2 = value2, ...";
-    
-    
-    
+    $requete = $requete = "UPDATE produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
+    join categorie
+    on produit.categorie_categorie_id = categorie_id
+    join marque
+    on produit.marque_marque_id = marque_id
+    where produit_id = '$produit_id_mod'";
+        $resultat = mysqli_query($connexion,$requete);
 }
+
 
 function afficherProduit(){
     
@@ -116,11 +120,14 @@ function ajoutUtilisateur($nom,$prenom,$email,$motDePasse){
     $hash = hash("md5", $motDePasse);    
     $requete = "INSERT INTO client (client_nom,client_prenom,client_mot_de_passe,courriel)
                 VALUES(?,?,?,?)";
+
+                //on aurait pu mettre $nom, $prenom... a la place des "?" plus haut mais cest plus safe de bind param avant 
   $stmt = mysqli_prepare($connexion, $requete);
     mysqli_stmt_bind_param($stmt, "ssss", $nom,$prenom,$hash,$email);
     
+    //$stmt is bind, start using to creat user
     if (mysqli_stmt_execute($stmt)) {
-        $resultat = mysqli_stmt_get_result($stmt);
+        header("location: index.php");
     }
     
 }

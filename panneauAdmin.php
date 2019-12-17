@@ -9,7 +9,7 @@
 <html lang="fr">
 
 <head>
-    <title> exercice 4</title>
+    <title> Panneau Administratif</title>
 
     <style>
         body {
@@ -34,6 +34,7 @@
     </header>
 
     <main>
+    <h1>Ajouter marque</h1>
         <header>
 
         </header>
@@ -43,11 +44,16 @@
             <input type="submit" name="enregistrerMarque" value="enregistrer">
         </form>
 
+        <h1>Ajouter categorie</h1>
+
         <form action="" method="get">
 
             <input type="text" name="categorie_nom" placeholder="categorie nom">
             <input type="submit" name="enregistrerCategorie" value="enregistrer">
         </form>
+
+        <h1>Ajouter produits</h1>
+
 
         <form action="" method="get">
             <input type="text" name="produit_nom" placeholder="produit nom">
@@ -83,6 +89,27 @@
             <input type="submit" name="enregistrerProduit" value="enregistrer">
         </form>
 
+        
+        <h1>Modifier Produit</h1>
+        <form action="" method="get">
+
+            <input type="text" name="produit_id_mod" placeholder="id produit">
+            <input type="submit" value="Aller modifier le produit">
+
+
+        </form>
+        <?php
+        if(isset($_GET['produit_id_mod']) && strlen($_GET['produit_id_mod']) > 0){
+            $idProduit = $_GET['produit_id_mod'];
+            $location = 'modifierProduit.php?produit_id_mod=' . $idProduit;
+            header("location: $location");
+        }
+        ?>
+
+
+
+      
+
     </main>
 
 
@@ -92,14 +119,12 @@
 
 
 <?php   
-    if (isset($_GET["enregistrerMarque"])){  
-        
-     ajoutCategorie($_GET['marque_nom']);
-    
+    if (isset($_GET["enregistrerMarque"])){          
+        ajoutMarque($_GET['marque_nom']);    
     };
         
       if (isset($_GET["enregistrerCategorie"])){  
-    ajoutMarque($_GET['categorie_nom']);    
+        ajoutCategorie($_GET['categorie_nom']);    
     };
 
     if (isset($_GET["enregistrerProduit"])){    

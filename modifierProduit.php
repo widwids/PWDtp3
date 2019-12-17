@@ -32,15 +32,12 @@
 
     <header>
         <?php require_once("header.php");
-            if ($_SESSION['email'] == "admin@admin.com" &&$_SESSION['mdp'] == "admin"){
-                /*ici pour afficher la session admin affin d'ajouter*/
-            echo '<a href="ajoutProduit.php"> Ajout Produit</a>';
-            }
+           
         ?>
     </header>
 
     <main>
-        <table>
+    <table>
             <tr>
                 <th>nom</th>
                 <th>description</th>
@@ -48,26 +45,26 @@
                 <th>categorie</th>
                 <th>marque</th>
             </tr>
-            <?php 
+            <?php
             
             $liste = afficherProduitModifier($_GET['produit_id_mod']);
-            if($rangee = mysqli_fetch_assoc($liste))
-				
-				{  
-                    
+            if($rangee = mysqli_fetch_assoc($liste))    
+            {  
                     echo "<tr>";
-                    echo "<td><input type='text' size=50 name='modifier' value='" . $rangee["produit_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier' value='" . $rangee["produit_description"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier' value='" . $rangee["produit_prix"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier' value='" . $rangee["marque_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='modifier' value='" . $rangee["categorie_nom"] . "'></td>";
-                
-                    echo "</tr>";					
-					}
+                    echo "<form action=\"\" method=\"post\">";
+                    echo "<td><input type='text' size=50 name='modifier_nom' value='" . $rangee["produit_nom"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='modifier_description' value='" . $rangee["produit_description"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='modifier_prix' value='" . $rangee["produit_prix"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='modifier_marque' value='" . $rangee["marque_nom"] . "'></td>";
+                    echo "<td><input type='text' size=50 name='modifier_categorie' value='" . $rangee["categorie_nom"] . "'></td>";
+                    echo "<td><input type='submit' name='enregistrer_produit' value='Enregistrer'></td>";
+                    echo "</form>";
+                    echo "</tr>";                    
+            }
             
             ?>
-        </table>
-
+    </table>
+    
     </main>
 
 
@@ -77,3 +74,9 @@
 
 
 </html>
+<?php
+    if(isset($_POST['modifier_nom'], $_POST['modifier_description'], $_POST['modifier_prix'], $_POST['modifier_marque'], $_POST['modifier_categorie'])){
+        $idProduit = $_GET['produit_id_mod'];
+        modifierProduit($idProduit, $_POST['modifier_nom'], $_POST['modifier_description'], $_POST['modifier_prix'], $_POST['modifier_marque'], $_POST['modifier_categorie']);
+    }
+?>

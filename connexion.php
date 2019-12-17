@@ -1,6 +1,8 @@
 <?php
     require_once("include/sql.php");
     require_once("connectDB.php");
+    require_once("session.php");
+
 ?>
 
 

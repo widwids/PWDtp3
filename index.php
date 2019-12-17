@@ -29,13 +29,9 @@
 
 <body>
 
-
     <header>
-        <?php require_once("header.php");
-            if ($_SESSION['email'] == "admin@admin.com" &&$_SESSION['mdp'] == "admin"){
-                /*ici pour afficher la session admin affin d'ajouter*/
-                echo '<a href="ajoutProduit.php"> Ajout Produit</a>';
-            }
+        <?php         
+        require_once("header.php");          
         ?>
     </header>
 
