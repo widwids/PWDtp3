@@ -54,7 +54,7 @@
             </tr>
             <?php 
                 $liste = afficherProduit();
-
+                echo '<form action="#" method="post">';
                 foreach($liste as $row["categorie_nom"]){
                     foreach($liste as $row){
                     
@@ -64,13 +64,9 @@
                         echo"<tr>";
 
                         echo "<td>
-                            <form name='commanderProduit' method='get'>
-                            <input type='checkbox' name='commanderProduit' value='".$row['produit_id'].">'";
+                            <input type='checkbox' name='commanderProduit[]' value='".$row['produit_id']."'>";
 
-                        echo "<td>
-                            <input type='submit' name='commanderProduit' value='Enregistrer la commande'>
-
-                            </form></td>";
+                        echo "</td>";
                             
 
                         echo "<td>".$row["produit_nom"]."</td>";
@@ -83,6 +79,8 @@
 
 
                 } 
+                echo "<tr><td><input type='submit' name='submit' value='Enregistrer la commande'></td></tr>";
+                echo "</form>";
                 
                     
                     
@@ -114,9 +112,6 @@
                 
             
             ?>
-     <!--        <form action="" method="get">
-            <input type="submit" name="commanderProduit" value="Enregistrer la commande">
-        </form> -->
         </table>
         
     </main>
@@ -138,8 +133,12 @@
 
 
 
-        if(isset($_GET['commanderProduit'])){
-            echo $row['produit_id'];
+        if(isset($_POST['submit'])){
+            if (!empty($_POST['commanderProduit'])) {
+                foreach($_POST['commanderProduit'] as $selected) {
+                    echo $selected."<br>";
+                }
+            }
         }
         
 
