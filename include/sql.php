@@ -30,7 +30,7 @@ function afficherProduitModifier($produit_id_mod){
     
 }
 
-function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $produit_prix, $produit_categorie, $produit_marque){
+/* function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $produit_prix, $produit_categorie, $produit_marque){
     global $connexion;
     
     $requete = "UPDATE produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
@@ -42,7 +42,19 @@ function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $p
         $resultat = mysqli_query($connexion,$requete);
         return $resultat;
 
+} */
+
+function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $produit_prix, $produit_categorie, $produit_marque){
+    global $connexion;
+    $requete = "UPDATE produit
+    SET produit_nom='$produit_nom', produit_description='$produit_description', produit_prix='$produit_prix', categorie_categorie_id='$produit_categorie', marque_marque_id='$produit_marque'WHERE produit_id='$produit_id_mod'";
+    $resultat = mysqli_query($connexion,$requete);
+    return $resultat;
 }
+
+
+
+
 
 
 function afficherProduit(){    
