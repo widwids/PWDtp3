@@ -40,6 +40,8 @@ function modifierProduit($produit_id_mod, $produit_nom, $produit_description, $p
     on produit.marque_marque_id = marque_id
     where produit_id = '$produit_id_mod'";
         $resultat = mysqli_query($connexion,$requete);
+        return $resultat;
+
 }
 
 

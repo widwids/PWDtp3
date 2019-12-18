@@ -37,36 +37,56 @@
     </header>
 
     <main>
-    <table>
-            <tr>
+    
+            <!-- <tr>
                 <th>nom</th>
                 <th>description</th>
                 <th>prix</th>
                 <th>marque</th>
                 <th>categorie</th>
-            </tr>
+            </tr> -->
             <?php
             
             $liste = afficherProduitModifier($_GET['produit_id_mod']);
             if($rangee = mysqli_fetch_assoc($liste))    
             {  
-                    echo "<tr>";
-                    echo "<form action=\"\" method=\"post\">";                    
+                    //echo "<tr>";
+                    echo "<form action=\"\" method=\"post\">";
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                 
+                    echo "<input type='text' size=30 name='produit_nom' value='" . $rangee["produit_nom"] . "'></<input>";
+                    echo "<label> Nom</label>";
+                    echo "</form><br>";
 
-                    
-                    echo "<td><input type='text' size=50 name='produit_nom' value='" . $rangee["produit_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='produit_description' value='" . $rangee["produit_description"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='produit_prix' value='" . $rangee["produit_prix"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='categorie_nom' value='" . $rangee["categorie_nom"] . "'></td>";
-                    echo "<td><input type='text' size=50 name='marque_nom' value='" . $rangee["marque_nom"] . "'></td>";
-                    
-                    echo "<td><input type='submit' name='enregistrer_produit' value='Enregistrer'></td>";
 
-                    echo "</form></tr>";
+                    echo "<form action=\"\" method=\"post\">";
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                  
+                    echo "<input type='text' size=30 name='produit_description' value='" . $rangee["produit_description"] . "'></<input>";
+                    echo "<label> Description</label>";
+                    echo "</form><br>";
+
+                    echo "<form action=\"\" method=\"post\">";
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                  
+                    echo "<input type='text' size=30 name='produit_prix' value='" . $rangee["produit_prix"] . "'></<input>";
+                    echo "<label> Prix</label>";
+                    echo "</form><br>";
+
+                    echo "<form action=\"\" method=\"post\">"; 
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                 
+                    echo "<input type='text' size=30 name='categorie_nom' value='" . $rangee["categorie_nom"] . "'></<input>";
+                    echo "<label> Marque</label>";
+                    echo "</form><br>";
+
+                    echo "<form action=\"\" method=\"post\">";   
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";               
+                    echo "<input type='text' size=30 name='marque_nom' value='" . $rangee["marque_nom"] . "'></<input>";
+                    echo "<label> Categorie</label>";
+                    echo "</form><br>";
+                    
+
             }
             
             ?>
-    </table>
+    
     
     </main>
 
