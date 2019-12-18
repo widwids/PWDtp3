@@ -52,37 +52,38 @@
             {  
                     //echo "<tr>";
                     echo "<form action=\"\" method=\"post\">";
-                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                 
+
+                    echo "<label> Nom</label>";                 
                     echo "<input type='text' size=30 name='produit_nom' value='" . $rangee["produit_nom"] . "'></<input>";
-                    echo "<label> Nom</label>";
-                    echo "</form><br>";
-
-
-                    echo "<form action=\"\" method=\"post\">";
-                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                  
-                    echo "<input type='text' size=30 name='produit_description' value='" . $rangee["produit_description"] . "'></<input>";
-                    echo "<label> Description</label>";
-                    echo "</form><br>";
-
-                    echo "<form action=\"\" method=\"post\">";
-                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                  
-                    echo "<input type='text' size=30 name='produit_prix' value='" . $rangee["produit_prix"] . "'></<input>";
-                    echo "<label> Prix</label>";
-                    echo "</form><br>";
-
-                    echo "<form action=\"\" method=\"post\">"; 
-                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";                 
-                    echo "<input type='text' size=30 name='categorie_nom' value='" . $rangee["categorie_nom"] . "'></<input>";
-                    echo "<label> Marque</label>";
-                    echo "</form><br>";
-
-                    echo "<form action=\"\" method=\"post\">";   
-                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";               
-                    echo "<input type='text' size=30 name='marque_nom' value='" . $rangee["marque_nom"] . "'></<input>";
-                    echo "<label> Categorie</label>";
-                    echo "</form><br>";
                     
+                    echo "<label> Description</label>";                  
+                    echo "<input type='text' size=30 name='produit_description' value='" . $rangee["produit_description"] . "'></<input>";
+                    
+                    echo "<label> Prix</label>";
+                    echo "<input type='text' size=30 name='produit_prix' value='" . $rangee["produit_prix"] . "'></<input>";
 
+                    echo "<label> Categorie</label>";
+                    echo "<select name='categorie_nom' id=''>";
+                    $liste = listeCategorie();
+                    foreach($liste as $row) {
+                        echo "<option value =".$row["categorie_id"].">";
+                        echo $row["categorie_nom"];
+                        echo "</option>";
+                    }
+                    echo "</select>";
+
+                    echo "<label> Marque</label>";
+                    $listeMarque = listeMarque();
+                    echo "<select name='marque_nom' id=''>";
+                    foreach($listeMarque as $row){
+                        echo "<option value=".$row["marque_id"].">";
+                        echo $row["marque_nom"];
+                        echo "</option>";
+                    }
+                    echo "</select>";
+                    
+                    echo "<input type='submit' name='enregistrer_produit' value='Modifier'></<input>";  
+                    echo "</form><br>";
             }
             
             ?>
