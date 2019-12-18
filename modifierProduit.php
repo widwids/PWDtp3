@@ -47,7 +47,7 @@
             </tr> -->
             <?php
             
-            $liste = afficherProduitModifier($_GET['produit_id_mod']);
+            $liste = getProductWithId($_GET['produit_id_mod']);
             if($rangee = mysqli_fetch_assoc($liste))    
             {  
                     //echo "<tr>";

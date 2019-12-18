@@ -16,7 +16,7 @@ function autentification($email,$motDePasse) {
     }
 }
 
-function afficherProduitModifier($produit_id_mod){
+function getProductWithId($produit_id_mod){
     global $connexion;
         $requete = "SELECT produit_id,produit_nom,produit_description,produit_prix,categorie_nom,marque_nom from produit
                 join categorie
